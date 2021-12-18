@@ -1,6 +1,5 @@
 package com.aftership.filmlocations.domain.entities;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,16 +13,18 @@ public class Film {
   private Writer writer;
   private List<Actor> actors;
 
-  public Film(String title, String releaseYear, String locationName, String productionCompany, String distributor,
-      String director, String writer, List<String> actorsNames) {
+  public Film(String title, String releaseYear, Location location,
+      ProductionCompany productionCompany, Distributor distributor,
+      Director director, Writer writer, List<Actor> actors) {
     this.title = title.trim().toLowerCase();
     this.releaseYear = parseToInt(releaseYear);
-    this.locations = createLocationsList(locationName);
-    this.productionCompany = new ProductionCompany(productionCompany);
-    this.distributor = new Distributor(distributor);
-    this.director = new Director(director);
-    this.writer = new Writer(writer);
-    this.actors = createActorsList(actorsNames);
+    this.locations = new ArrayList<>();
+    this.locations.add(location);
+    this.productionCompany = productionCompany;
+    this.distributor = distributor;
+    this.director = director;
+    this.writer = writer;
+    this.actors = actors;
   }
 
   private int parseToInt(String num) {
@@ -32,20 +33,6 @@ public class Film {
     } catch (NumberFormatException e) {
       return -1;
     }
-  }
-
-  private List<Actor> createActorsList(List<String> actorsNames) {
-    List<Actor> actors = new ArrayList<>();
-    for (String actorName : actorsNames) {
-      actors.add(new Actor(actorName));
-    }
-    return actors;
-  }
-
-  private List<Location> createLocationsList(String locationName) {
-    List<Location> locations = new ArrayList<>();
-    locations.add(new Location(locationName));
-    return locations;
   }
 
   public void addLocation(String locationName) {

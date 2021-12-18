@@ -6,4 +6,8 @@ public class Writer {
   public Writer(String name) {
     this.name = name.trim().toLowerCase();
   }
+
+  public String getName() {
+    return this.name;
+  }
 }

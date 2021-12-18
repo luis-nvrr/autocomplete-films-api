@@ -6,4 +6,8 @@ public class Actor {
   public Actor(String name) {
     this.name = name.trim().toLowerCase();
   }
+
+  public String getName() {
+    return this.name;
+  }
 }

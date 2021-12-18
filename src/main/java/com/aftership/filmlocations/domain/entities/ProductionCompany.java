@@ -6,4 +6,8 @@ public class ProductionCompany {
   public ProductionCompany(String name) {
     this.name = name.trim().toLowerCase();
   }
+
+  public String getName() {
+    return this.name;
+  }
 }

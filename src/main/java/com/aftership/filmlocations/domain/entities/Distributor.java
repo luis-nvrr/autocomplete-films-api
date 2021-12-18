@@ -6,4 +6,8 @@ public class Distributor {
   public Distributor(String name) {
     this.name = name.trim().toLowerCase();
   }
+
+  public String getName() {
+    return this.name;
+  }
 }
